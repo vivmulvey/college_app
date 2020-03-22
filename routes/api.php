@@ -27,7 +27,7 @@ Route::middleware('auth:api')->group(function () {
     Route::get('logout', 'API\PassportController@logout');
 
     Route::resource('courses', 'API\CourseController')->except([
-        'create', 'edit'
+        'create', 'edit' , 'show'
     ]);
     Route::resource('lecturers', 'API\LecturerController')->except([
         'create', 'edit'
