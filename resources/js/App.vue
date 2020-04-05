@@ -1,25 +1,68 @@
 <template>
-  <div>
-    <MyNavbar />
+<div class="bg-light">
+
+    <MyNavbar  :loggedIn="this.loggedIn" v-on:login="setLoggedIn" v-on:logout="setLoggedOut"  />
     <b-container>
-      <router-view />
+        <transition name="slide" mode="out-in">
+            <router-view :loggedIn="this.loggedIn" v-on:login="setLoggedIn" v-on:logout="setLoggedOut" />
+        </transition>
     </b-container>
-  </div>
+
+</div>
 </template>
 <script>
 import MyNavbar from './components/MyNavbar'
 
 export default {
-  name: 'app',
-  components: {
-    MyNavbar
-  },
-  data() {
-    return {
+    name: 'app',
+    components: {
+        MyNavbar
+    },
+    data() {
+        return {
+            loggedIn: false
 
+        }
+    },
+    created() {
+        if (localStorage.getItem('token')) {
+            this.loggedIn = true;
+            console.log("APP: ", this.loggedIn);
+        } else {
+            this.loggedIn = false;
+        }
+    },
+    methods: {
+        setLoggedIn() {
+            this.loggedIn = true;
+        },
+        setLoggedOut() {
+            this.loggedIn = false;
+        }
     }
-  }
 }
 </script>
 <style>
+
+
+.slide-enter-active,
+.slide-leave-active{
+  transition: opacity 1s , transform 1s;
+}
+
+.slide-enter,
+.slide-leave-to{
+  opacity: 0;
+  transform: translateX(-30%);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.4s;
+}
+
+.fade-enter,
+.fade-leave-to {
+    opacity: 0;
+}
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h3 v-if="loggedIn">You are logged in!!!</h3>
-    <b-form v-else @submit="onSubmit" >
+    <router-link to="/register"> Register </router-link>
+    <b-form @submit="onSubmit" >
       <b-form-group
         id="input-group-1"
         label="Email address:"
@@ -74,6 +74,8 @@ export default {
       .then(function(response) {
         localStorage.setItem('token', response.data.token)
         app.loggedIn = true;
+        app.$emit('login');
+        app.$router.push('/courses')
       })
       .catch(function(error) {
         console.log(error.response.data);

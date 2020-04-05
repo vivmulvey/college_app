@@ -7,6 +7,7 @@ import router from './router'
 
 Vue.use(BootstrapVue)
 
+
 new Vue({
   router,
   render: h => h(App)

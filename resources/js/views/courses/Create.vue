@@ -21,17 +21,21 @@
                 </b-form-group>
 
                 <b-form-group id="input-group-3" label="Description:" label-for="input-3">
-                    <b-form-input id="input-3" type="text" required placeholder="Enter description" v-model="form.description">
+                    <b-form-input id="input-3" type="number" required placeholder="Enter description" v-model="form.description">
                     </b-form-input>
                 </b-form-group>
 
-                <b-form-group id="input-group-4" label="Points:" label-for="input-4">
-                    <b-form-input id="input-4" type="number" required placeholder="Enter points" v-model="form.points">
-                    </b-form-input>
+                <b-form-group id="input-group-4" label="Level:" label-for="input-4">
+
+                  <b-form-select name='level' v-model='form.level' class='form-control'>
+                          <b-form-select-option value="6">6</b-form-select-option>
+                          <b-form-select-option value="7">7</b-form-select-option>
+                          <b-form-select-option value="8">8</b-form-select-option>
+                        </b-form-select>
                 </b-form-group>
 
-                <b-form-group id="input-group-5" label="Level:" label-for="input-5">
-                    <b-form-input id="input-5" type="number" required placeholder="Enter level" v-model="form.level">
+                <b-form-group id="input-group-5" label="Points:" label-for="input-5">
+                    <b-form-input id="input-5" type="number" required placeholder="Enter Points" v-model="form.points">
                     </b-form-input>
                 </b-form-group>
 

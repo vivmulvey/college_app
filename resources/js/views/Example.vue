@@ -1,72 +1,53 @@
 <template>
-  <div>
-    Test Login <br>
-    <button @click="login()">Login</button>
-    <br>
-    Test Logout <br>
-    <button @click="logout()">Logout</button>
-    <br>
-    Test courses <br>
-    <button @click="getCourses()"> Get Courses </button>
+<div>
+  <div row>
+    <div cols-6>
+        <b-card no-body class="overflow-hidden" style="max-width: 500px;">
+            <b-row no-gutters>
+                <b-col md="6">
+                    <b-card-img src="https://picsum.photos/400/400/?image=20" class="rounded-0"></b-card-img>
+                </b-col>
+                <b-col md="6">
+                    <b-card-body title="Courses">
+                        <b-card-text>
+                            This is a wider card with supporting text as a natural lead-in to additional content.
+                            This content is a little bit longer.
+                        </b-card-text>
+                        <b-button href="#" variant="primary">Go somewhere</b-button>
+                    </b-card-body>
+                </b-col>
+            </b-row>
+        </b-card>
+    </div>
+    <div cols-6>
+        <b-card no-body class="overflow-hidden" style="max-width: 500px;">
+            <b-row no-gutters>
+                <b-col md="6">
+                    <b-card-img src="https://picsum.photos/400/400/?image=20" class="rounded-0"></b-card-img>
+                </b-col>
+                <b-col md="6">
+                    <b-card-body title="Courses">
+                        <b-card-text>
+                            This is a wider card with supporting text as a natural lead-in to additional content.
+                            This content is a little bit longer.
+                        </b-card-text>
+                        <b-button href="#" variant="primary">Go somewhere</b-button>
+                    </b-card-body>
+                </b-col>
+            </b-row>
+        </b-card>
+    </div>
   </div>
+</div>
 </template>
 <script>
 export default {
-  name: 'example',
-  components: {
+    name: 'example',
+    components: {
 
-  },
-  data() {
-    return {
-      email: "sam@bloggs.com",
-      password: "secret",
-      name: "",
-      courses: []
-    }
-  },
-  mounted() {
-    if (localStorage.getItem('token') !== null) {
-      console.log('***USER LOGGED IN***');
-    }
-    else {
-      console.log('user not logged in');
-    }
-  },
-  methods: {
-    login() {
-      let app = this;
-      axios.post('/api/login', {
-        email: app.email,
-        password: app.password
-      })
-      .then(function(response) {
-        console.log(response.data);
-        app.name = response.data.name;
-        localStorage.setItem('token', response.data.token);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
     },
-    getCourses() {
-      let app = this;
-      let token = localStorage.getItem('token');
-      axios.get('/api/courses', {
-        headers: { Authorization: "Bearer " + token}
-      })
-      .then(function (response) {
-         console.log(response.data);
-         app.courses = response.data.data;
-      })
-      .catch(function (error) {
-         console.log(error);
-      })
-    },
-    logout() {
-      localStorage.removeItem('token');
-      console.log("Logged Out");
-    }
-  }
+
+    methods: {}
 }
 </script>
 <style>

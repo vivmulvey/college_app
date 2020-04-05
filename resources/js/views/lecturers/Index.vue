@@ -20,6 +20,7 @@
             <b-td>{{ item.email }}</b-td>
             <b-td>{{ item.phone }}</b-td>
               <b-td><router-link :to="`/lecturers/edit/${item.id}`">Edit</router-link></b-td>
+              <b-td><router-link :to="`/lecturers/show/${item.id}`">View</router-link></b-td>
           </b-tr>
         </b-body>
       </b-table-simple>
@@ -48,9 +49,7 @@ export default {
        console.log(error);
     })
   },
-  methods: {
 
-  }
 }
 </script>
 <style>
