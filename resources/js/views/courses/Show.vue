@@ -1,44 +1,79 @@
 <template>
 <b-row align-h="center">
-    <b-col cols="12">
+    <b-col cols="8">
 
-        <b-table-simple hover responsive>
-            <b-tr>
-                <b-th>Title</b-th>
-                <b-td>{{ course.title }}</b-td>
+        <b-card class="myCard" border-variant="info">
 
-                <b-th>Code</b-th>
-                <b-td>{{ course.code }}</b-td>
+            <b-form-group>
+                <h2> {{course.title}} </h2>
+            </b-form-group>
 
-                <b-th>Description</b-th>
-                <b-td>{{ course.description }}</b-td>
+            <b-dropdown-divider class="divider"></b-dropdown-divider>
 
-                <b-th>Points</b-th>
-                <b-td>{{ course.level }}</b-td>
+            <b-form-group label="ID Number:">
+                <p> {{course.id}} </p>
+            </b-form-group>
 
-                <b-th>Level</b-th>
-                <b-td>{{ course.points }}</b-td>
+            <b-dropdown-divider class="divider"></b-dropdown-divider>
 
-                <b-th>Enrolments</b-th>
-                <b-td> {{ course.enrolments.length }} </b-td>
+            <b-form-group label="Code:">
+                <p> {{ course.code }} </p>
+            </b-form-group>
 
-            </b-tr>
+            <b-dropdown-divider class="divider"></b-dropdown-divider>
 
-        </b-table-simple>
+            <b-form-group label="Description:">
+                <p> {{course.description}} </p>
+            </b-form-group>
 
+            <b-dropdown-divider class="divider"></b-dropdown-divider>
+
+            <b-form-group label="Points:">
+                <p> {{course.points}} </p>
+            </b-form-group>
+
+            <b-dropdown-divider class="divider"></b-dropdown-divider>
+
+            <b-form-group label="Level:">
+                <p> {{course.level}} </p>
+            </b-form-group>
+
+            <b-dropdown-divider class="divider"></b-dropdown-divider>
+
+            <b-form-group label="No. of Enrolments:">
+                <p> {{course.enrolments.length}} </p>
+            </b-form-group>
+
+            <b-dropdown-divider class="divider"></b-dropdown-divider>
+
+            <b-row align-h="between">
+                <b-col cols="2">
+                    <div>
+                        <router-link to="/courses">
+                            <b-icon-box-arrow-left font-scale="3"></b-icon-box-arrow-left>
+                        </router-link>
+                    </div>
+                </b-col>
+
+                <b-col cols="2">
+                    <div>
+                        <b-button variant="outline-info" id="show-btn" @click="showModal">
+                            <b-icon-trash font-scale="1"></b-icon-trash>
+                        </b-button>
+
+
+                        <b-modal ref="my-modal" hide-footer title="Warning!">
+                            <div class="d-block text-center">
+                                <h3>If you delete this course , you will delete all enrolments attached to it.</h3>
+                            </div>
+                            <b-button class="mt-3" variant="outline-danger" block @click="hideModal">Back</b-button>
+                            <b-button class="mt-2" variant="outline-info" block @click="checkEnrolments()">Continue</b-button>
+                        </b-modal>
+                    </div>
+                </b-col>
+            </b-row>
+        </b-card>
     </b-col>
-    <div>
-        <b-button id="show-btn" @click="showModal">Delete Course</b-button>
-
-        <b-modal ref="my-modal" hide-footer title="Warning">
-            <div class="d-block text-center">
-                <h3>If you delete this course , you will delete all enrolments attached to it.</h3>
-            </div>
-            <b-button class="mt-3" variant="outline-danger" block @click="hideModal">Close Me</b-button>
-            <b-button class="mt-2" variant="outline-warning" block @click="checkEnrolments()">Continue</b-button>
-        </b-modal>
-
-    </div>
 </b-row>
 </template>
 
@@ -98,7 +133,7 @@ export default {
                 })
                 .then(function(response) {
                     console.log(response);
-                    // app.items = app.items.filter(dat => dat.id !== id)
+                    // app.items = app.items.filter(dat => dat.id !== id) only needed for index
                     app.$router.push('/courses')
                 })
                 .catch(function(error) {
@@ -141,4 +176,15 @@ export default {
 }
 </script>
 <style>
+.divider {
+    display: block;
+    height: 2px;
+    width: 100%;
+    margin: 10px;
+}
+
+.col-form-label {
+    font-weight: bold;
+    font-size: 15px;
+}
 </style>

@@ -6,7 +6,6 @@
                 <li class="nav-item">
                     <a class="nav-link active" href="/">Home</a>
                 </li>
-
                 <li class="nav-item">
                     <a class="nav-link active" href="/register">Register</a>
                 </li>
@@ -15,57 +14,48 @@
                 </li>
             </ul>
         </div>
-        <div class="card-body">
-            <h4 class="card-title">-Register-</h4>
-            <b-form class="form" @submit="onSubmit">
-                <b-form-group id="input-group-2" label="Name:" label-for="input-2">
-                    <b-input-group>
-                        <b-input-group-prepend is-text>
-                            <b-icon icon="person"></b-icon>
-                        </b-input-group-prepend>
-                        <b-form-input id="input-2" type="text" required placeholder="Enter Name" v-model="form.name">
-                        </b-form-input>
-                    </b-input-group>
-                </b-form-group>
 
-                <b-form-group id="input-group-1" label="Email address:" label-for="input-1" description="We'll never share your email with anyone else.">
+        <div class="card-body">
+            <h4 class="card-title">-Login-</h4>
+            <b-form @submit="onSubmit">
+                <b-form-group id="input-group-1" label="Email Address:" label-for="input-1" description="We'll never share your email with anyone else.">
                   <b-input-group>
-                      <b-input-group-prepend is-text>
-                          <b-icon icon="envelope"></b-icon>
-                      </b-input-group-prepend>
-                    <b-form-input id="input-1" type="email" required placeholder="Enter Email" v-model="form.email">
+                    <b-input-group-prepend is-text>
+                      <b-icon icon="envelope"></b-icon>
+                  </b-input-group-prepend>
+                    <b-form-input id="input-1" type="email" required placeholder="Enter email" v-model="form.email">
                     </b-form-input>
                   </b-input-group>
                 </b-form-group>
 
-                <b-form-group id="input-group-2" label="Password:" label-for="input-2" description="Password must be at least 6 charachters.">
+                <b-form-group id="input-group-2" label="Password:" label-for="input-2">
                   <b-input-group>
-                      <b-input-group-prepend is-text>
-                          <b-icon icon="eye-slash-fill"></b-icon>
-                      </b-input-group-prepend>
-                        <b-form-input id="input-2" type="password" required placeholder="Enter Password" v-model="form.password">
+                    <b-input-group-prepend is-text>
+                      <b-icon icon="eye-slash-fill"></b-icon>
+                  </b-input-group-prepend>
+                    <b-form-input id="input-2" type="password" required placeholder="Enter password" v-model="form.password">
                     </b-form-input>
                   </b-input-group>
                 </b-form-group>
 
                 <b-button type="submit" variant="outline-info">Submit</b-button>
-
             </b-form>
+
         </div>
     </div>
+
+
 </div>
 </template>
-
 <script>
 export default {
-    name: 'register',
+    name: 'login',
     components: {
 
     },
     data() {
         return {
             form: {
-                name: '',
                 email: '',
                 password: ''
             },
@@ -86,11 +76,9 @@ export default {
 
             let app = this;
 
-            axios.post('/api/register', {
-                    name: app.form.name,
+            axios.post('/api/login', {
                     email: app.form.email,
                     password: app.form.password
-
                 })
                 .then(function(response) {
                     localStorage.setItem('token', response.data.token)
@@ -105,17 +93,8 @@ export default {
     }
 }
 </script>
-
 <style>
-.card {
-    text-align: center;
-}
-
-.card-title {
-    font-weight: bold;
-}
-
-.nav-item {
-    padding: 5px;
+.card-title{
+  font-weight: bold;
 }
 </style>

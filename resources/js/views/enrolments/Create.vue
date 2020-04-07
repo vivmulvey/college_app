@@ -1,47 +1,78 @@
 <template>
-<b-row>
+<b-row align-h="center">
     <b-col cols="8">
 
-        <b-card title="Add Enrolment" tag="article">
+        <b-card border-variant="info" title="Add Enrolment" tag="article">
             <b-form @submit="onSubmit">
-                <b-form-group id="input-group-1" label="Date"   label-for="input-1">
-                    <b-form-input id="input-1" type="date" required placeholder="Enter date" v-model="form.date">
-                    </b-form-input>
+                <b-form-group id="input-group-1" label="Date" label-for="input-1">
+
+                    <b-form-datepicker id="input-1" type="date" v-model="form.date">
+                    </b-form-datepicker>
+  
                 </b-form-group>
 
                 <b-form-group id="input-group-2" label="Time:" label-for="input-2">
-                    <b-form-input id="input-2" type="time" required placeholder="Enter time" v-model="form.time">
-                    </b-form-input>
+                    <b-input-group>
+                        <b-input-group-prepend is-text>
+                            <b-icon icon="clock"></b-icon>
+                        </b-input-group-prepend>
+                        <b-form-input id="input-2" type="time" required placeholder="Enter time" v-model="form.time">
+                        </b-form-input>
+                    </b-input-group>
                 </b-form-group>
 
-                <b-form-group id="input-group-2" label="Status:" label-for="input-2">
-                    <b-form-select name='status' v-model='form.status' class='form-control'>
+                <b-form-group id="input-group-3" label="Status:" label-for="input-3">
+                    <b-input-group>
+                        <b-input-group-prepend is-text>
+                            <b-icon icon="list"></b-icon>
+                        </b-input-group-prepend>
+                        <b-form-select name='status' v-model='form.status' class='form-control'>
 
                             <b-form-select-option value="interested">Interested</b-form-select-option>
                             <b-form-select-option value="assigned">Assigned</b-form-select-option>
                             <b-form-select-option value="career-break">Career-break</b-form-select-option>
                             <b-form-select-option value="associate">Associate</b-form-select-option>
 
-                    </b-form-select>
+                        </b-form-select>
+                    </b-input-group>
                 </b-form-group>
 
                 <b-form-group id="input-group-4" label="Course:" label-for="input-4">
-                    <b-form-select name='course' v-model='form.course_id' class='form-control'>
-                        <option placeholder="Choose a course" v-for="course in courses" v-bind:value='course.id'>
-                            {{course.title}}
-                        </option>
-                    </b-form-select>
+                    <b-input-group>
+                        <b-input-group-prepend is-text>
+                            <b-icon icon="list"></b-icon>
+                        </b-input-group-prepend>
+                        <b-form-select name='course' v-model='form.course_id' class='form-control'>
+                            <option placeholder="Choose a course" v-for="course in courses" v-bind:value='course.id'>
+                                {{course.title}}
+                            </option>
+                        </b-form-select>
+                    </b-input-group>
                 </b-form-group>
 
                 <b-form-group id="input-group-4" label="Lecturer:" label-for="input-4">
-                    <b-form-select name='lecturer' v-model='form.lecturer_id' class='form-control'>
-                        <option placeholder="Choose a lecturer" v-for="lecturer in lecturers" v-bind:value='lecturer.id'>
-                            {{lecturer.name}}
-                        </option>
-                    </b-form-select>
+                    <b-input-group>
+                        <b-input-group-prepend is-text>
+                            <b-icon icon="list"></b-icon>
+                        </b-input-group-prepend>
+                        <b-form-select name='lecturer' v-model='form.lecturer_id' class='form-control'>
+                            <option placeholder="Choose a lecturer" v-for="lecturer in lecturers" v-bind:value='lecturer.id'>
+                                {{lecturer.name}}
+                            </option>
+                        </b-form-select>
+                    </b-input-group>
                 </b-form-group>
 
-                <b-button type="submit" variant="primary">Submit</b-button>
+                <b-row align-h="between">
+                    <b-col cols="2">
+                        <router-link to="/enrolments">
+                            <b-icon-box-arrow-left font-scale="3"></b-icon-box-arrow-left>
+                        </router-link>
+                    </b-col>
+                    <b-col cols="2">
+                        <b-button type="submit" variant="outline-info">Submit</b-button>
+                    </b-col>
+                </b-row>
             </b-form>
         </b-card>
     </b-col>

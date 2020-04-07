@@ -1,7 +1,6 @@
 <template>
-<div class="bg-light">
-
-    <MyNavbar  :loggedIn="this.loggedIn" v-on:login="setLoggedIn" v-on:logout="setLoggedOut"  />
+<div>
+    <MyNavbar :loggedIn="this.loggedIn" v-on:login="setLoggedIn" v-on:logout="setLoggedOut" />
     <b-container>
         <transition name="slide" mode="out-in">
             <router-view :loggedIn="this.loggedIn" v-on:login="setLoggedIn" v-on:logout="setLoggedOut" />
@@ -43,22 +42,25 @@ export default {
 }
 </script>
 <style>
+.container {
+    height: 100%;
+}
 
 
 .slide-enter-active,
-.slide-leave-active{
-  transition: opacity 1s , transform 1s;
+.slide-leave-active {
+    transition: opacity 1s, transform 1s;
 }
 
 .slide-enter,
-.slide-leave-to{
-  opacity: 0;
-  transform: translateX(-30%);
+.slide-leave-to {
+    opacity: 0;
+    transform: translateX(-30%);
 }
 
 .fade-enter-active,
 .fade-leave-active {
-    transition: opacity 0.4s;
+    transition: opacity 0.3s;
 }
 
 .fade-enter,

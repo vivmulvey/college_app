@@ -29,7 +29,7 @@ class CourseController extends Controller
             'code' => 'required|string|max:5',
             'description' => 'required|string',
             'points' => 'required|integer|min:100,max:600',
-            'level' => 'required|integer|min:7,max:10'
+            'level' => 'required|integer|min:6,max:10'
         ]);
 
         if ($validator->fails()) {
