@@ -33,11 +33,19 @@
 
             <b-dropdown-divider class="divider"></b-dropdown-divider>
 
-            <b-form-group label="No. of Enrolments:">
-                <p> {{lecturer.enrolments.length}} </p>
-
-                <b-dropdown-divider class="divider"></b-dropdown-divider>
-
+            <b-form-group label="Courses Enrolled In :">
+                <b-table-simple hover responsive striped bordered>
+                    <b-thead>
+                        <b-th>Title</b-th>
+                        <b-th>ID</b-th>
+                    </b-thead>
+                    <b-tbody>
+                        <b-tr v-for="enrolments in lecturer.enrolments " :key="enrolments.id" class="extra">
+                            <b-td>{{ enrolments.course.title }}</b-td>
+                            <b-td>{{ enrolments.course.id }}</b-td>
+                        </b-tr>
+                    </b-tbody>
+                </b-table-simple>
             </b-form-group>
 
             <b-row align-h="between">
@@ -174,5 +182,9 @@ export default {
 .col-form-label{
   font-weight: bold;
   font-size: 15px;
+}
+
+.bv-no-focus-ring{
+  text-align: center;
 }
 </style>

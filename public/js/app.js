@@ -2012,7 +2012,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "myNavbar",
   props: {
@@ -2763,6 +2762,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3351,6 +3361,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3735,6 +3746,14 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -44670,7 +44689,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.divider {\n    display: block;\n    height: 2px;\n    width: 100%;\n    margin: 10px;\n}\n.col-form-label {\n    font-weight: bold;\n    font-size: 15px;\n}\n", ""]);
+exports.push([module.i, "\n.divider {\n    display: block;\n    height: 2px;\n    width: 100%;\n    margin: 10px;\n}\n.col-form-label {\n    font-weight: bold;\n    font-size: 15px;\n}\n.extra {\n    text-align: center;\n}\n", ""]);
 
 // exports
 
@@ -44727,7 +44746,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.col-form-label{\n  font-weight: bold;\n  font-size: 15px;\n}\n", ""]);
+exports.push([module.i, "\n.col-form-label{\n  font-weight: bold;\n  font-size: 15px;\n}\n.bv-no-focus-ring{\n  text-align: center;\n}\n", ""]);
 
 // exports
 
@@ -78560,11 +78579,57 @@ var render = function() {
               _vm._v(" "),
               _c("b-dropdown-divider", { staticClass: "divider" }),
               _vm._v(" "),
-              _c("b-form-group", { attrs: { label: "No. of Enrolments:" } }, [
-                _c("p", [
-                  _vm._v(" " + _vm._s(_vm.course.enrolments.length) + " ")
-                ])
-              ]),
+              _c(
+                "b-form-group",
+                { attrs: { label: "Lecturers Enrolled :" } },
+                [
+                  _c(
+                    "b-table-simple",
+                    {
+                      attrs: {
+                        hover: "",
+                        responsive: "",
+                        striped: "",
+                        bordered: ""
+                      }
+                    },
+                    [
+                      _c(
+                        "b-thead",
+                        [
+                          _c("b-th", [_vm._v("Name")]),
+                          _vm._v(" "),
+                          _c("b-th", [_vm._v("ID")])
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-tbody",
+                        _vm._l(_vm.course.enrolments, function(enrolments) {
+                          return _c(
+                            "b-tr",
+                            { key: enrolments.id, staticClass: "extra" },
+                            [
+                              _c("b-td", [
+                                _vm._v(_vm._s(enrolments.lecturer.name))
+                              ]),
+                              _vm._v(" "),
+                              _c("b-td", [
+                                _vm._v(_vm._s(enrolments.lecturer.id))
+                              ])
+                            ],
+                            1
+                          )
+                        }),
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
               _vm._v(" "),
               _c("b-dropdown-divider", { staticClass: "divider" }),
               _vm._v(" "),
@@ -80390,13 +80455,50 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "b-form-group",
-                { attrs: { label: "No. of Enrolments:" } },
+                { attrs: { label: "Courses Enrolled In :" } },
                 [
-                  _c("p", [
-                    _vm._v(" " + _vm._s(_vm.lecturer.enrolments.length) + " ")
-                  ]),
-                  _vm._v(" "),
-                  _c("b-dropdown-divider", { staticClass: "divider" })
+                  _c(
+                    "b-table-simple",
+                    {
+                      attrs: {
+                        hover: "",
+                        responsive: "",
+                        striped: "",
+                        bordered: ""
+                      }
+                    },
+                    [
+                      _c(
+                        "b-thead",
+                        [
+                          _c("b-th", [_vm._v("Title")]),
+                          _vm._v(" "),
+                          _c("b-th", [_vm._v("ID")])
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-tbody",
+                        _vm._l(_vm.lecturer.enrolments, function(enrolments) {
+                          return _c(
+                            "b-tr",
+                            { key: enrolments.id, staticClass: "extra" },
+                            [
+                              _c("b-td", [
+                                _vm._v(_vm._s(enrolments.course.title))
+                              ]),
+                              _vm._v(" "),
+                              _c("b-td", [_vm._v(_vm._s(enrolments.course.id))])
+                            ],
+                            1
+                          )
+                        }),
+                        1
+                      )
+                    ],
+                    1
+                  )
                 ],
                 1
               ),

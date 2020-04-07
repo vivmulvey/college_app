@@ -40,8 +40,19 @@
 
             <b-dropdown-divider class="divider"></b-dropdown-divider>
 
-            <b-form-group label="No. of Enrolments:">
-                <p> {{course.enrolments.length}} </p>
+            <b-form-group label="Lecturers Enrolled :">
+                <b-table-simple hover responsive striped bordered>
+                    <b-thead>
+                        <b-th>Name</b-th>
+                        <b-th>ID</b-th>
+                    </b-thead>
+                    <b-tbody>
+                        <b-tr v-for="enrolments in course.enrolments " :key="enrolments.id" class="extra">
+                            <b-td>{{ enrolments.lecturer.name }}</b-td>
+                            <b-td>{{ enrolments.lecturer.id }}</b-td>
+                        </b-tr>
+                    </b-tbody>
+                </b-table-simple>
             </b-form-group>
 
             <b-dropdown-divider class="divider"></b-dropdown-divider>
@@ -114,6 +125,7 @@ export default {
         hideModal() {
             this.$refs['my-modal'].hide()
         },
+
         checkEnrolments() {
             if (this.course.enrolments.length === 0) {
                 this.deleteCourse(this.course.id);
@@ -186,5 +198,9 @@ export default {
 .col-form-label {
     font-weight: bold;
     font-size: 15px;
+}
+
+.extra {
+    text-align: center;
 }
 </style>

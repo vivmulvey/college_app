@@ -1,6 +1,5 @@
 <template>
 <div>
-
     <b-navbar toggleable="sm" type="dark" variant="dark">
         <a class="navbar-brand" href="#">
             EduCo
